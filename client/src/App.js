@@ -54,7 +54,7 @@ class App extends React.Component {
       <div class="container">
         <div class="row">
         <Router>
-        <div class="col-sm-2"> 
+        <div class="col-sm-2 "> 
           <Navigation />
           </div>
           <div class="col-sm"> 

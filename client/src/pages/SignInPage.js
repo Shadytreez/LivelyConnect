@@ -13,7 +13,8 @@ class SignInPage extends React.Component {
     state = {
         UserName: '',
         Password: '',
-        success: false
+        success: false,
+        signUp: false
       }  
 
 
@@ -42,9 +43,13 @@ class SignInPage extends React.Component {
          this.setState({success:true})
      }
     }
+    signUp = (event) => {
+      this.setState({signUp:true})
+    }
 
   render() {
     if(this.state.success) return <Redirect to="/" />;
+    if(this.state.signUp) return <Redirect to="/sign-up" />;
     return (
         <div>
             <h1>Sign in</h1>
@@ -55,7 +60,7 @@ class SignInPage extends React.Component {
                     <input type="password" id="Password" onChange={this.handleChange} value={this.state.Password}/> <br></br>
                     <input type="submit" value="Submit" ></input>
                 </form>
-            <h4>Sign up</h4>    
+            <h4 onClick={this.signUp} style={{ color: 'blue'}}>Sign up</h4>    
         </div>
       );
   }

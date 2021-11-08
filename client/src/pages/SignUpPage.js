@@ -15,6 +15,7 @@ class SignUpPage extends React.Component {
         Password: '',
         ConfirmPassword: '',
         success: false,
+        linkedln: '',
         // currentState: "Alabama",
         state: ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
@@ -33,31 +34,61 @@ class SignUpPage extends React.Component {
             Password: event.target.value
          })
          console.log(this.state.URL)
+      }else if(event.target.id === 'linkedln'){
+        this.setState({ 
+          linkedln: event.target.value
+        })
+        console.log(this.state.linkedln);
       }else{
         this.setState({ 
             ConfirmPassword: event.target.value
          })
       }
     }
-    // countryChange = event => {
-    //     if (event.target.value) {
-    //       this.setState({currentState:event.target.value});
-    //       console.log(this.state.currentState)
-    //     }
-    //   }; 
+
 
   //to check if both input fields are both field and sent the data to the backend to check 
   //TODO: Add the backend component to the page (POST REQUEST)  
   onFormSubmit = (event) => {
      event.preventDefault(); 
-     if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() === "" || document.getElementById('ConfirmPassword').value.trim() ===""){
+     if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() === "" || document.getElementById('ConfirmPassword').value.trim() ==="" || document.getElementById('linkedln').value.trim() ===""){
         alert("Please fill out all the infomation out");
      }else{
          if(document.getElementById('Password').value !== document.getElementById('ConfirmPassword').value){
             alert("Pass word don't match"); 
          }else{
-            // alert("it works"); 
-            this.setState({success:true})
+            const myData = {
+              name: document.getElementById("UserName").value.trim(),
+              location: document.getElementById("State").value.trim(),
+              linkedln: document.getElementById("linkedln").value.trim(),
+              password: document.getElementById("Password").value.trim()
+            }
+            console.log(myData);
+            fetch("/api/user/", {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(myData),
+            })
+              .then(res => {
+                if(res.ok) {
+                  return res.json()
+                }
+        
+                throw new Error('Content validation');
+              })
+              .then(post => {
+                this.setState({
+                  success: true,
+                });
+              })
+              .catch(err => {
+                this.setState({
+                  error: true,
+                });
+              });
          }
      }
     }
@@ -74,6 +105,8 @@ class SignUpPage extends React.Component {
                     <input type="password" id="Password" onChange={this.handleChange} value={this.state.Password}/> <br></br>
                     <label for="ConfirmPassword">Confirm Password</label><br></br>
                     <input type="password" id="ConfirmPassword" onChange={this.handleChange} value={this.state.ConfirmPassword}/> <br></br>
+                    <label for="linkedln">Linkedln Url</label><br></br>
+                    <input type="text" id="linkedln" onChange={this.handleChange} value={this.state.linkedln}/> <br></br>
                     <label for="State">State</label><br></br>
                     <select id="State" onChange={this.countryChange}>
                     {this.state.state.map(allCountries => {
