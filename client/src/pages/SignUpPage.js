@@ -58,48 +58,56 @@ class SignUpPage extends React.Component {
      event.preventDefault(); 
      if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() === "" || document.getElementById('ConfirmPassword').value.trim() ==="" || document.getElementById('linkedln').value.trim() ===""){
         alert("Please fill out all the infomation out");
+     }else if(document.getElementById('Password').value !== document.getElementById('ConfirmPassword').value){
+      alert("Passwords don't match");
      }else{
-         if(document.getElementById('Password').value !== document.getElementById('ConfirmPassword').value){
-            alert("Pass word don't match"); 
-         }else{
-            const myData = {
-              user_name: document.getElementById("UserName").value.trim(),
-              name: document.getElementById("FullName").value.trim(),
-              location: document.getElementById("State").value.trim(),
-              linkedln: document.getElementById("linkedln").value.trim(),
-              password: document.getElementById("Password").value.trim(),
-              image: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+      var expression = /https?:\/\/(www\.linkedin\.com\/in\/)[-a-zA-Z0-9@:%._\+~#=]{2,256}\//g
+      var regex = new RegExp(expression);
+      var t = document.getElementById("linkedln").value.trim().toString();
+      
+      if (t.match(regex)) {
+        const myData = {
+          user_name: document.getElementById("UserName").value.trim(),
+          name: document.getElementById("FullName").value.trim(),
+          location: document.getElementById("State").value.trim(),
+          linkedln: document.getElementById("linkedln").value.trim(),
+          password: document.getElementById("Password").value.trim(),
+          image: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+        }
+        console.log(myData);
+        fetch("/api/user/", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(myData),
+        })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
             }
-            console.log(myData);
-            fetch("/api/user/", {
-              method: 'POST',
-              credentials: 'include',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(myData),
-            })
-              .then(res => {
-                if(res.ok) {
-                  return res.json()
-                }
-        
-                throw new Error('Content validation');
-              })
-              .then(post => {
-                this.setState({
-                  success: true,
-                });
-              })
-              .catch(err => {
-                alert("User already exist");
-                this.setState({
-                  error: true,
-                });
-              });
-         }
-     }
+    
+            throw new Error('Content validation');
+          })
+          .then(post => {
+            this.setState({
+              success: true,
+            });
+          })
+          .catch(err => {
+            alert("User already exist");
+            this.setState({
+              error: true,
+            });
+          }); 
+      } else {
+        alert("Not a valid linkedln Url");
+      }
+          
+            
     }
+  }
 
   render() {
     if(this.state.success) return <Redirect to="/" />;
@@ -108,15 +116,15 @@ class SignUpPage extends React.Component {
             <h1>Sign in</h1>
             <form  onSubmit={this.onFormSubmit} >
                     <label for="UserName"/>UserName<br></br>
-                    <input type="text" id="UserName" onChange={this.handleChange} value={this.state.UserName}/>  <br></br>
+                    <input type="text" id="UserName" onChange={this.handleChange} placeholder="John Doe UserName" value={this.state.UserName}/>  <br></br>
                     <label for="FullName"/>Full Name<br></br>
-                    <input type="text" id="FullName" onChange={this.handleChange} value={this.state.FullName}/>  <br></br>
+                    <input type="text" id="FullName" onChange={this.handleChange} placeholder="John Doe" value={this.state.FullName}/>  <br></br>
                     <label for="Password">Password</label><br></br>
                     <input type="password" id="Password" onChange={this.handleChange} value={this.state.Password}/> <br></br>
                     <label for="ConfirmPassword">Confirm Password</label><br></br>
                     <input type="password" id="ConfirmPassword" onChange={this.handleChange} value={this.state.ConfirmPassword}/> <br></br>
                     <label for="linkedln">Linkedln Url</label><br></br>
-                    <input type="text" id="linkedln" onChange={this.handleChange} value={this.state.linkedln}/> <br></br>
+                    <input type="text" id="linkedln" onChange={this.handleChange} placeholder="https://www.linkedin.com/in/JohnDoe/" value={this.state.linkedln}/> <br></br>
                     <label for="State">State</label><br></br>
                     <select id="State" onChange={this.countryChange}>
                     {this.state.state.map(allCountries => {
