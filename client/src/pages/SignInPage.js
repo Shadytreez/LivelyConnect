@@ -40,9 +40,36 @@ class SignInPage extends React.Component {
      if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() ===""){
         alert("Please fill out all the infomation out");
      }else{
-         this.setState({success:true})
+       const myData = {
+        user: document.getElementById("UserName").value.trim(),
+         password: document.getElementById("Password").value.trim()
+       }
+       const url = "/api/user/login/" + myData.user + "/"+ myData.password;
+       fetch(url, {
+        method: 'GET',
+       }).then(response => response.json())
+         .then(responseJson => {
+        console.log("line 41", responseJson);
+         if(responseJson === false){
+           alert("wrong user and/or password");
+         }else{
+           
+           localStorage.setItem("user",responseJson.user_name);
+           localStorage.setItem("name", responseJson.currentBalance);
+           localStorage.setItem("location", responseJson.location);
+           localStorage.setItem("linkedln", responseJson.linkedln);
+           localStorage.setItem("image", responseJson.image);
+           console.log(localStorage.getItem("user"));
+           console.log(localStorage.getItem("name"));
+           console.log(localStorage.getItem("location"));
+         }   
+      })
+      .catch((error) => {
+         console.log("Failed to retrieve trending gifs");
+       });
      }
     }
+
     signUp = (event) => {
       this.setState({signUp:true})
     }

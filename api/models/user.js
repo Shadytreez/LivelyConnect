@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {}
 
   User.init({
-    name: {
+    user_name: {
       type: DataTypes.STRING,
       validate: {
         len: [0, 250],
@@ -14,9 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       unique: true
     },
+    name: { type: DataTypes.STRING },
     location: { type: DataTypes.STRING },
     linkedln: { type: DataTypes.STRING },
     password: { type: DataTypes.STRING },
+    image: {type: DataTypes.STRING},
   }, {
     sequelize,
     modelName: 'user'

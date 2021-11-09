@@ -16,7 +16,7 @@ class SignUpPage extends React.Component {
         ConfirmPassword: '',
         success: false,
         linkedln: '',
-        // currentState: "Alabama",
+        FullName: '',
         state: ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
       }  
@@ -39,6 +39,11 @@ class SignUpPage extends React.Component {
           linkedln: event.target.value
         })
         console.log(this.state.linkedln);
+      }else if(event.target.id === 'FullName'){
+        this.setState({ 
+          FullName: event.target.value
+        })
+        console.log(this.state.FullName);
       }else{
         this.setState({ 
             ConfirmPassword: event.target.value
@@ -58,10 +63,12 @@ class SignUpPage extends React.Component {
             alert("Pass word don't match"); 
          }else{
             const myData = {
-              name: document.getElementById("UserName").value.trim(),
+              user_name: document.getElementById("UserName").value.trim(),
+              name: document.getElementById("FullName").value.trim(),
               location: document.getElementById("State").value.trim(),
               linkedln: document.getElementById("linkedln").value.trim(),
-              password: document.getElementById("Password").value.trim()
+              password: document.getElementById("Password").value.trim(),
+              image: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
             }
             console.log(myData);
             fetch("/api/user/", {
@@ -85,6 +92,7 @@ class SignUpPage extends React.Component {
                 });
               })
               .catch(err => {
+                alert("User already exist");
                 this.setState({
                   error: true,
                 });
@@ -101,6 +109,8 @@ class SignUpPage extends React.Component {
             <form  onSubmit={this.onFormSubmit} >
                     <label for="UserName"/>UserName<br></br>
                     <input type="text" id="UserName" onChange={this.handleChange} value={this.state.UserName}/>  <br></br>
+                    <label for="FullName"/>Full Name<br></br>
+                    <input type="text" id="FullName" onChange={this.handleChange} value={this.state.FullName}/>  <br></br>
                     <label for="Password">Password</label><br></br>
                     <input type="password" id="Password" onChange={this.handleChange} value={this.state.Password}/> <br></br>
                     <label for="ConfirmPassword">Confirm Password</label><br></br>
