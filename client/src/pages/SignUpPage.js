@@ -112,7 +112,7 @@ class SignUpPage extends React.Component {
   render() {
     if(this.state.success) return <Redirect to="/" />;
     return (
-        <div>
+        <div className="container-fluid text-center ">
             <h1>Sign in</h1>
             <form  onSubmit={this.onFormSubmit} >
                     <label for="UserName"/>UserName<br></br>

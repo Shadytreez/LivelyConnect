@@ -78,8 +78,8 @@ class SignInPage extends React.Component {
     if(this.state.success) return <Redirect to="/" />;
     if(this.state.signUp) return <Redirect to="/sign-up" />;
     return (
-        <div>
-            <h1>Sign in</h1>
+      <div className="container-fluid text-center ">
+        <h1>Sign in</h1>
             <form  onSubmit={this.onFormSubmit} >
                     <label for="UserName"/>UserName<br></br>
                     <input type="text" id="UserName" onChange={this.handleChange} value={this.state.UserName}/>  <br></br>
@@ -87,7 +87,7 @@ class SignInPage extends React.Component {
                     <input type="password" id="Password" onChange={this.handleChange} value={this.state.Password}/> <br></br>
                     <input type="submit" value="Submit" ></input>
                 </form>
-            <h4 onClick={this.signUp} style={{ color: 'blue'}}>Sign up</h4>    
+            <h4 onClick={this.signUp} style={{ color: 'blue'}}>Sign up</h4> 
         </div>
       );
   }

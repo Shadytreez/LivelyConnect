@@ -58,16 +58,16 @@ class App extends React.Component {
           <Navigation />
           </div>
           <div class="col-sm"> 
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
+          
+           
               <Switch>
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
-            </div>
-          </div>
+            
+          
           </div>
         </Router>
         </div>
