@@ -1,6 +1,6 @@
 // 'use strict';
 const { Model } = require('sequelize');
-const { sequelize } = require('../../../../learn-sequelize/models');
+const { sequelize } = require('../../../learn-sequelize/models');
 
 module.exports = (sequelize, DataTypes) => {
     class Event extends Model {}

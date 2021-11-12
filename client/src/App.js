@@ -12,6 +12,7 @@ import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 
 import './App.css';
+import CreateEventPage from './pages/CreateEventPage';
 
 
 function Navigation(props) {
@@ -46,6 +47,7 @@ class App extends React.Component {
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/new-event" component={CreateEventPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>

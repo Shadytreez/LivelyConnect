@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-const { Event } = require('');
+// const { Event } = require('');
 
-function getEventName(props) {
-    return Event
-}
+// function getEventName(props) {
+//     return Event
+// }
 
-function ActivityType(props) {
-    return (
-        <div>
+// function ActivityType(props) {
+//     return (
+//         <div>
             
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
 
-function Description(props) {
-    return (
-        <div>
+// function Description(props) {
+//     return (
+//         <div>
             
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
 
-function ZoomLink(props) {
-    return (
-        <div>
+// function ZoomLink(props) {
+//     return (
+//         <div>
             
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
 
 class EventPage extends Component {
 
