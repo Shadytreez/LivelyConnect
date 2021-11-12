@@ -25,11 +25,11 @@ class CreateEventPage extends Component {
             <div>
                 <div className = "banner" style={{ 
                     backgroundImage: `url(${this.state.bannerImg})`, 
-                    backgroundSize: 'contain', 
+                    backgroundSize: '100% 100%', 
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    height: 700, 
-                    width: 1300,
+                    height: 594, 
+                    width: 1056,
                     alignItems: 'center',
                      }}> 
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100 }} onChange={ this.imgURL }/>
@@ -51,7 +51,6 @@ class CreateEventPage extends Component {
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/><br/>
                             <input id = 'dateTime' placeholder = '' type = 'date'/><br/><br/>
-                            {/* <button id = 'rsvp'>RSVP</button><br/><br/> */}
                             <input id = 'link' placeholder = 'Zoom Link'/><br/><br/>
                             <button id = 'rsvp'>Submit</button><br/><br/>
                         </div>

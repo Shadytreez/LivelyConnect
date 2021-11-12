@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import Popup from 'reactjs-popup';
+
+// POP-UP EXAMPLE:
+
+// <Popup trigger={<button> Trigger</button>} position="right center">
+//     <div>Popup content here !!</div>
+//   </Popup>
+
 // const { Event } = require('');
 
 // function getEventName(props) {
