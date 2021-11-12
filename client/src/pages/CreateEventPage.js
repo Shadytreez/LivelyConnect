@@ -25,11 +25,12 @@ class CreateEventPage extends Component {
             <div>
                 <div className = "banner" style={{ 
                     backgroundImage: `url(${this.state.bannerImg})`, 
-                    backgroundSize: 'cover', 
+                    backgroundSize: 'contain', 
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 100,
-                    height: 500, 
+                    backgroundPosition: 'center',
+                    height: 700, 
                     width: 1300,
+                    alignItems: 'center',
                      }}> 
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100 }} onChange={ this.imgURL }/>
                     {/* <button id = 'submitBanner' onClick={ this.imgChange }>Show image!</button> */}
