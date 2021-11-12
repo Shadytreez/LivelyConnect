@@ -65,6 +65,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
+                <Route path="/new-event" component={CreateEventPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             
