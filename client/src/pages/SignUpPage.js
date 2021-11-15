@@ -66,6 +66,7 @@ class SignUpPage extends React.Component {
       var t = document.getElementById("linkedln").value.trim().toString();
       
       if (t.match(regex)) {
+        //the data where we are going to sent to backend v
         const myData = {
           user_name: document.getElementById("UserName").value.trim(),
           name: document.getElementById("FullName").value.trim(),
@@ -75,14 +76,17 @@ class SignUpPage extends React.Component {
           image: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
         }
         console.log(myData);
+        //senting to localhost:8080/api/user with a POST METHOD with a JSON data
         fetch("/api/user/", {
           method: 'POST',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json'
           },
+          //to turn our data into a JSON
           body: JSON.stringify(myData),
         })
+        //if we were able to sent data 
           .then(res => {
             if(res.ok) {
               return res.json()
@@ -90,11 +94,13 @@ class SignUpPage extends React.Component {
     
             throw new Error('Content validation');
           })
+          //after the data was create and store into DB
           .then(post => {
             this.setState({
               success: true,
             });
           })
+          //if something when wrong
           .catch(err => {
             alert("User already exist");
             this.setState({
@@ -113,7 +119,7 @@ class SignUpPage extends React.Component {
     if(this.state.success) return <Redirect to="/" />;
     return (
         <div className="container-fluid text-center ">
-            <h1>Sign in</h1>
+            <h1>Sign Up</h1>
             <form  onSubmit={this.onFormSubmit} >
                     <label for="UserName"/>UserName<br></br>
                     <input type="text" id="UserName" onChange={this.handleChange} placeholder="John Doe UserName" value={this.state.UserName}/>  <br></br>

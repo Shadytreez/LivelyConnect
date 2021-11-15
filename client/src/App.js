@@ -10,7 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import AboutUsPage from './pages/AboutUsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
-
+import ProfilePage from './pages/ProfilePage';
 import './App.css';
 
 
@@ -27,7 +27,7 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
+          <NavLink className="nav-link" exact to="/profile">
             Profile
           </NavLink>
         </li>
@@ -57,13 +57,14 @@ class App extends React.Component {
         <div class="col-sm-2 "> 
           <Navigation />
           </div>
-          <div class="col-sm"> 
+          <div class="col-sm-10"> 
           
            
               <Switch>
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
+                <Route path="/profile" component={ProfilePage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             

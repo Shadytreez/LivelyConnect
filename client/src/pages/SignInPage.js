@@ -3,13 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 
 class SignInPage extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state={
-    //         UserName: '',
-    //         Password: ''
-    //       };
-    // }
+   
     state = {
         UserName: '',
         Password: '',
@@ -33,8 +27,7 @@ class SignInPage extends React.Component {
       }
     }
 
-  //to check if both input fields are both field and sent the data to the backend to check 
-  //TODO: Add the backend component to the page (GET REQUEST)  
+  //to check if both input fields are both field and sent the data to the backend to check   
   onFormSubmit = (event) => {
      event.preventDefault();
      if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() ===""){
@@ -62,10 +55,12 @@ class SignInPage extends React.Component {
            console.log(localStorage.getItem("user"));
            console.log(localStorage.getItem("name"));
            console.log(localStorage.getItem("location"));
+           console.log(localStorage.getItem("linkedln"));
+           console.log(localStorage.getItem("image"));
          }   
       })
       .catch((error) => {
-         console.log("Failed to retrieve trending gifs");
+         console.log("Fail to sign in");
        });
      }
     }
