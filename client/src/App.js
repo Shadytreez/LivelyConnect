@@ -11,6 +11,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import Logo from './image/Logo.png';
 import './App.css';
 
 
@@ -52,6 +53,7 @@ class App extends React.Component {
   render() {
     return (
       <div class="container">
+        <img src={Logo}  width="1000" height="100"/>
         <div class="row">
         <Router>
         <div class="col-sm-2 "> 
