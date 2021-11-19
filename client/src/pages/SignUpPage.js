@@ -77,7 +77,7 @@ class SignUpPage extends React.Component {
         }
         console.log(myData);
         //senting to localhost:8080/api/user with a POST METHOD with a JSON data
-        fetch("/api/user/", {
+        fetch("/api/auth/signup", {
           method: 'POST',
           credentials: 'include',
           headers: {

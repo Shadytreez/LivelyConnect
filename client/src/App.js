@@ -12,6 +12,9 @@ import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
 import Logo from './image/Logo.png';
+import { AuthProvider } from './context/AuthContext';
+import AuthButton from './components/AuthButton';
+import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 
@@ -38,11 +41,12 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink className="nav-link" exact to="/sign-in">
             Sign in/Log Out
           </NavLink>
-        </li>
+        </li> */}
+        <AuthButton />
       </ul>
     </nav>
   );
@@ -55,6 +59,7 @@ class App extends React.Component {
       <div class="container">
         <img src={Logo}  width="1000" height="100"/>
         <div class="row">
+        <AuthProvider>
         <Router>
         <div class="col-sm-2 "> 
           <Navigation />
@@ -66,13 +71,14 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
-                <Route path="/profile" component={ProfilePage} />
+                <PrivateRoute path="/profile" component={ProfilePage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             
           
           </div>
         </Router>
+        </AuthProvider>
         </div>
         </div>
     );
