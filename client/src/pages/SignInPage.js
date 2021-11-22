@@ -1,15 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { AuthContext } from '../context/AuthContext';
 
 class SignInPage extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state={
-    //         UserName: '',
-    //         Password: ''
-    //       };
-    // }
+   
     state = {
         UserName: '',
         Password: '',
@@ -33,40 +27,52 @@ class SignInPage extends React.Component {
       }
     }
 
-  //to check if both input fields are both field and sent the data to the backend to check 
-  //TODO: Add the backend component to the page (GET REQUEST)  
+  //to check if both input fields are both field and sent the data to the backend to check   
   onFormSubmit = (event) => {
      event.preventDefault();
      if(document.getElementById('UserName').value.trim() ==="" || document.getElementById('Password').value.trim() ===""){
         alert("Please fill out all the infomation out");
      }else{
-       const myData = {
-        user: document.getElementById("UserName").value.trim(),
-         password: document.getElementById("Password").value.trim()
-       }
-       const url = "/api/user/login/" + myData.user + "/"+ myData.password;
-       fetch(url, {
-        method: 'GET',
-       }).then(response => response.json())
-         .then(responseJson => {
-        console.log("line 41", responseJson);
-         if(responseJson === false){
-           alert("wrong user and/or password");
-         }else{
+      //  const myData = {
+      //   user: document.getElementById("UserName").value.trim(),
+      //    password: document.getElementById("Password").value.trim()
+      //  }
+      //  const url = "/api/user/login/" + myData.user + "/"+ myData.password;
+      //  fetch(url, {
+      //   method: 'GET',
+      //  }).then(response => response.json())
+      //    .then(responseJson => {
+      //   console.log("line 41", responseJson);
+      //    if(responseJson === false){
+      //      alert("wrong user and/or password");
+      //    }else{
            
-           localStorage.setItem("user",responseJson.user_name);
-           localStorage.setItem("name", responseJson.currentBalance);
-           localStorage.setItem("location", responseJson.location);
-           localStorage.setItem("linkedln", responseJson.linkedln);
-           localStorage.setItem("image", responseJson.image);
-           console.log(localStorage.getItem("user"));
-           console.log(localStorage.getItem("name"));
-           console.log(localStorage.getItem("location"));
-         }   
+      //      localStorage.setItem("user",responseJson.user_name);
+      //      localStorage.setItem("name", responseJson.currentBalance);
+      //      localStorage.setItem("location", responseJson.location);
+      //      localStorage.setItem("linkedln", responseJson.linkedln);
+      //      localStorage.setItem("image", responseJson.image);
+      //      console.log(localStorage.getItem("user"));
+      //      console.log(localStorage.getItem("name"));
+      //      console.log(localStorage.getItem("location"));
+      //      console.log(localStorage.getItem("linkedln"));
+      //      console.log(localStorage.getItem("image"));
+      //    }   
+      // })
+      // .catch((error) => {
+      //    console.log("Fail to sign in");
+      //  });
+      const auth = this.context;
+      const user = document.getElementById("UserName").value.trim()
+      const password = document.getElementById("Password").value.trim()
+      auth.authenticate(user, password)
+      .then((user) => {
+        this.setState({ success: true });
       })
-      .catch((error) => {
-         console.log("Failed to retrieve trending gifs");
-       });
+      .catch((err) => {
+        alert("Login in failed");
+        this.setState({ failed: true });
+      });
      }
     }
 
@@ -92,5 +98,7 @@ class SignInPage extends React.Component {
       );
   }
 }
+
+SignInPage.contextType = AuthContext
 
 export default SignInPage;
