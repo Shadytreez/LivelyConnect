@@ -1,29 +1,23 @@
-import React, { Component } from 'react';
-const isImageURL = require('valid-image-url');
+import { Component } from "react";
+const { Event } = require('../../../api/models/Event');
 
-class CreateEventPage extends Component {
+function getEventName(props) {
+    return Event.name
+}
 
-    state = {
-        bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
-        name: '',
-        activity: '',
-        description: '',
-        zoom: '',
-    }
+function getActivityType(props) {
+    return Event.activityType
+}
 
-    imgURL = (event) => {
-        if(isImageURL(event.target.value)){
-            this.setState({ bannerImg: event.target.value })
-        }
-        if(!event.target.value) {
-            this.setState({ bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg'})
-        }
-    }
+function getDescription(props) {
+    return Event.description
+}
 
-    onClick = (event) => {
+function getZoomLink(props) {
+    return Event.link
+}
 
-    }
-
+class EditEventPage extends Component{
     render() {
         return (
             <div>
@@ -64,5 +58,3 @@ class CreateEventPage extends Component {
         )
     }
 }
-
-export default CreateEventPage;

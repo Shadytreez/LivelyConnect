@@ -13,6 +13,7 @@ import SignUpPage from './pages/SignUpPage';
 
 import './App.css';
 import CreateEventPage from './pages/CreateEventPage';
+import EventPage from './pages/EventPage';
 
 
 function Navigation(props) {
@@ -55,10 +56,10 @@ class App extends React.Component {
       <div class="container">
         <div class="row">
         <Router>
-        <div class="col-sm-2 "> 
-          <Navigation />
-          </div>
-          <div class="col-sm"> 
+          <div class="col-sm-2 "> 
+            <Navigation />
+            </div>
+            <div class="col-sm"> 
           
            
               <Switch>
@@ -66,6 +67,7 @@ class App extends React.Component {
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
                 <Route path="/new-event" component={CreateEventPage} />
+                <Route path="/event-page" component={EventPage}/>
                 <Route path="/" component={PostsListPage} />
               </Switch>
             
