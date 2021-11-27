@@ -5,10 +5,13 @@ class CreateEventPage extends Component {
 
     state = {
         bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
-        name: '',
-        activity: '',
+        eventName: '',
+        activityType: '',
         description: '',
-        zoom: '',
+        dateTime: '',
+        zoomLink: '',
+        isOpen: false,
+        hostUserName: '',
     }
 
     imgURL = (event) => {
@@ -20,14 +23,28 @@ class CreateEventPage extends Component {
         }
     }
 
-    onClick = (event) => {
-
+    handleChange = (event) => {
+        if(event.target.id === 'eventName'){
+            this.setState({ eventName: event.target.value })
+        }
+        else if(event.target.id === 'activityType'){
+            this.setState({ activityType: event.target.value })
+        }
+        else if(event.target.id === 'description'){
+            this.setState({ description: event.target.value })
+        }
+        else if(event.target.id === 'dateTime'){
+            this.setState({ dateTime: event.target.value })
+        }
+        else if(event.target.id === 'zoomLink'){
+            this.setState({ zoomLink: event.target.value })
+        }
     }
 
     render() {
         return (
             <div>
-                <div className = "banner" style={{ 
+                <div id = "banner" style={{ 
                     backgroundImage: `url(${this.state.bannerImg})`, 
                     backgroundSize: '100% 100%', 
                     backgroundRepeat: 'no-repeat',
@@ -55,8 +72,8 @@ class CreateEventPage extends Component {
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/><br/>
                             <input id = 'dateTime' placeholder = '' type = 'date'/><br/><br/>
-                            <textarea id = 'link' rows = '5' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
-                            <button id = 'rsvp' onClick = { this.onClick }>Submit</button><br/><br/>
+                            <textarea id = 'zoomLink' rows = '5' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
+                            <button id = 'submit' onClick = { this.onClick }>Submit</button><br/><br/>
                         </div>
                     </div>
                 </div>

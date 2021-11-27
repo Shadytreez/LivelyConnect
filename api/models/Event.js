@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             },
         },
-        image:{
+        bannerImg:{
             type: DataTypes.STRING,
             validate:{
                 len: [3, 250],

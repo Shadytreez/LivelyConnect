@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Popup from 'reactjs-popup';
-const { Event } = require('../../../api/models/Event');
+const { Event } = require('../../../api/models/event');
 
 // POP-UP EXAMPLE:
 
