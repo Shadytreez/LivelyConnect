@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     Event.init({
         name: {
             type: DataTypes.STRING,
+            unique: true,
+            primaryKey: true,
             validate: {
                 len: [3, 250],
                 notEmpty: true,
@@ -61,7 +63,10 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             }
         }
-    })
+    }, { 
+        sequelize,
+        modelName: 'event'
+     });
 
     return Event;
 };
