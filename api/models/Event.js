@@ -33,12 +33,33 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             },
         },
-        link: {
+        zoomLink: {
             type: DataTypes.STRING,
             validate: {
                 len: [3, 250],
                 notEmpty: true,
             },
+        },
+        image:{
+            type: DataTypes.STRING,
+            validate:{
+                len: [3, 250],
+                notEmpty: true,
+            }
+        },
+        isOpen:{
+            type: DataTypes.BOOLEAN,
+            validate:{
+                len: [3, 250],
+                notEmpty: true,
+            }
+        },
+        hostUserName:{
+            type: DataTypes.STRING,
+            validate:{
+                len: [3, 250],
+                notEmpty: true,
+            }
         }
     })
 
