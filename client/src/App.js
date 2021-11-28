@@ -16,6 +16,8 @@ import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
+import CreateEventPage from './pages/CreateEventPage';
+import EventPage from './pages/EventPage';
 
 
 function Navigation(props) {
@@ -61,17 +63,18 @@ class App extends React.Component {
         <div class="row">
         <AuthProvider>
         <Router>
-        <div class="col-sm-2 "> 
-          <Navigation />
-          </div>
-          <div class="col-sm-10"> 
+          <div class="col-sm-2 "> 
+            <Navigation />
+            </div>
+            <div class="col-sm"> 
           
            
               <Switch>
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
-                <PrivateRoute path="/profile" component={ProfilePage} />
+                <Route path="/new-event" component={CreateEventPage} />
+                <Route path="/event-page" component={EventPage}/>
                 <Route path="/" component={PostsListPage} />
               </Switch>
             
