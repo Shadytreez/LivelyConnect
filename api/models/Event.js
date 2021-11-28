@@ -23,14 +23,14 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         description: {
-            type: DataTypes.text,
+            type: DataTypes.STRING,
             validate: {
                 len: [3, 250],
                 notEmpty: true,
             },
         },
         dateTime: {
-            type: DataTypes.dateTime,
+            type: DataTypes.DATE,
             validate: {
                 notEmpty: true,
             },
