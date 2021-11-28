@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 // import Popup from 'reactjs-popup';
-const { Event } = require('../../../api/models/event');
+// const { Event } = require('../../../api/models/event');
 
 // POP-UP EXAMPLE:
 
@@ -37,17 +38,13 @@ class EventPage extends Component {
 
     render() {
         return (
-            <div>
-                <div className = "banner" style={{ 
-                    backgroundImage: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
-                    backgroundSize: '100% 100%', 
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center',
-                    height: 594, 
-                    width: 1056,
-                }}>  </div> { /* image of the banner */ }
-                
-                <div className = "container" style= {{ textAlign: 'center',}}>
+            <div style = {{ textAlign: 'center' }}>
+                <div>
+                    <img id = "banner" src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                        style={{ height: 504.9, width: 897.6}}/>
+                </div>
+                <br/>
+                <div className = "container">
                     <div>
                         <h2 id = 'eventName' size = '81'>This Is The Event Name</h2><br/><br/>
                     </div>
@@ -63,7 +60,7 @@ class EventPage extends Component {
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/>
                             <text id = 'dateTime' placeholder = '' type = 'date'>Date of event.</text><br/><br/>
-                            <a id = 'link' placeholder = 'Zoom Link' href = 'google.com'>Zoom link</a><br/><br/> {/* make zoom link taller */}
+                            <a id = 'link' placeholder = 'Zoom Link' href = 'www.google.com'>Zoom link</a><br/><br/> {/* make zoom link taller */}
                             <button id = 'rsvp'>RSVP Event</button><br/><br/>
                         </div>
                     </div>

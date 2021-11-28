@@ -1,21 +1,21 @@
 import { Component } from "react";
-const { Event } = require('../../../api/models/Event');
+// const { Event } = require('../../../api/models/Event');
 
-function getEventName(props) {
-    return Event.name
-}
+// function getEventName(props) {
+//     return Event.name
+// }
 
-function getActivityType(props) {
-    return Event.activityType
-}
+// function getActivityType(props) {
+//     return Event.activityType
+// }
 
-function getDescription(props) {
-    return Event.description
-}
+// function getDescription(props) {
+//     return Event.description
+// }
 
-function getZoomLink(props) {
-    return Event.link
-}
+// function getZoomLink(props) {
+//     return Event.link
+// }
 
 class EditEventPage extends Component{
     render() {

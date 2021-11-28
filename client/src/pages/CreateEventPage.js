@@ -74,28 +74,27 @@ class CreateEventPage extends Component {
 
     render() {
         return (
-            <div>
+            <div style = {{ textAlign: 'center' }}>
                 <div id = "banner" style={{ 
                     backgroundImage: `url(${this.state.bannerImg})`, 
                     backgroundSize: '100% 100%', 
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    height: 594, 
-                    width: 1056,
-                    textAlign: 'center',
+                    height: 504.9, // 1080 
+                    width: 897.6   // 1920
                      }}> 
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100, alignItems: 'center' }} onChange={ this.imgURL }/>
                     {/* <button id = 'submitBanner' onClick={ this.imgChange }>Show image!</button> */}
                 </div> { /* image of the banner  */ }
 
-                <div className = "container" style= {{ textAlign: 'center',}}>
+                <div className = "container">
                     <div className = "row row-cols-2">
                         <div className = "col">
                             { /* Event name, description, activity type */}
                             <br/><br/>
-                            <input id = 'eventName' type = 'text' size = '81' placeholder = 'Name of the event:'/><br/><br/>
-                            <textarea id = 'activityType' rows= '2' cols= '80' placeholder = 'What kind of activity is this?'></textarea><br/><br/>
-                            <textarea id = 'description' rows = '15' cols = '80' placeholder = 'What can we expect from this event?'></textarea>
+                            <input id = 'eventName' type = 'text' size = '76' placeholder = 'Name of the event:'/><br/><br/>
+                            <textarea id = 'activityType' rows= '2' cols= '75' placeholder = 'What kind of activity is this?'></textarea><br/><br/>
+                            <textarea id = 'description' rows = '15' cols = '75' placeholder = 'What can we expect from this event?'></textarea>
                             <br/><br/>
                         </div>
                         
