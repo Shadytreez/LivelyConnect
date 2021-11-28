@@ -92,7 +92,7 @@ class CreateEventPage extends Component {
                         <div className = "col">
                             { /* Event name, description, activity type */}
                             <br/><br/>
-                            <input id = 'eventName' type = 'text' size = '76' placeholder = 'Name of the event:'/><br/><br/>
+                            <input id = 'eventName' type = 'text' placeholder = 'Name of the event:' style = {{ width: '100%' }}/><br/><br/>
                             <textarea id = 'activityType' rows= '2' cols= '75' placeholder = 'What kind of activity is this?'></textarea><br/><br/>
                             <textarea id = 'description' rows = '15' cols = '75' placeholder = 'What can we expect from this event?'></textarea>
                             <br/><br/>
@@ -101,8 +101,8 @@ class CreateEventPage extends Component {
                         <div className = "col">
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/><br/>
-                            <input id = 'dateTime' placeholder = '' type = 'date'/><br/><br/>
-                            <textarea id = 'zoomLink' rows = '5' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
+                            <input id = 'dateTime' placeholder = '' type = 'date' style = {{ width: '90%' }}/><br/><br/>
+                            <textarea id = 'zoomLink' rows = '5' cols = '23' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
                             <button id = 'submit' onClick = { this.onClick }>Submit</button><br/><br/>
                         </div>
                     </div>

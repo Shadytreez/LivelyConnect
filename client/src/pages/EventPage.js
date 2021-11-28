@@ -39,29 +39,27 @@ class EventPage extends Component {
     render() {
         return (
             <div style = {{ textAlign: 'center' }}>
-                <div>
-                    <img id = "banner" src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                <div style ={{ marginBottom: 50 }}>
+                    <img id = "banner" src = 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg'
                         style={{ height: 504.9, width: 897.6}}/>
                 </div>
-                <br/>
-                <div className = "container">
+                <div className = "container" style = {{ marginBottom: 120 }}>
                     <div>
                         <h2 id = 'eventName' size = '81'>This Is The Event Name</h2><br/><br/>
                     </div>
                     <div className = "row row-cols-2">
-                        <div className = "col">
+                        <div className = "col"  style = {{ textAlign: 'left', marginLeft: 25 }}>
                             { /* Event name, description, activity type */}
-                            <p id = 'activityType' rows= '2' cols= '80'>This is the event's activity type.</p><br/>
-                            <p id = 'description' rows = '15' cols = '80'>This is the event description</p>
-                            <br/><br/>
+                            <p id = 'activityType' rows= '2' cols= '75'>This is the event's activity type.</p><br/>
+                            <p id = 'description' rows = '15' cols = '75'>This is the event description</p>
                         </div>
                         
                         <div className = "col">
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/>
-                            <text id = 'dateTime' placeholder = '' type = 'date'>Date of event.</text><br/><br/>
+                            <text id = 'dateTime' placeholder = '' type = 'date' >Date of event.</text><br/><br/>
                             <a id = 'link' placeholder = 'Zoom Link' href = 'www.google.com'>Zoom link</a><br/><br/> {/* make zoom link taller */}
-                            <button id = 'rsvp'>RSVP Event</button><br/><br/>
+                            <button id = 'rsvp'>RSVP Event</button>
                         </div>
                     </div>
                 </div>
