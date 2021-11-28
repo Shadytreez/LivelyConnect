@@ -44,13 +44,13 @@ class CreateEventPage extends Component {
     onClick = (event) => {
         const myData = {
             eventName: document.getElementById("eventName").value.trim(),
-            activityType: document.getElementById("activitiyType").value.trim(),
+            activityType: document.getElementById("activityType").value.trim(),
             description: document.getElementById("description").value.trim(),
-            dateTime: document.getElementById("dateTime").value.trim(),
+            // dateTime: document.getElementById("dateTime").value.trim(),
             zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
-            isOpen: this.state.isOpen,
-            hostUserName: 'Temporary host user.',
+            isOpen: true,
+            hostUserName: 'Temporary host user.'
         }
           console.log(myData);
           fetch("/api/event/", {

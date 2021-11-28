@@ -73,6 +73,8 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-in" component={SignInPage} />
                 <Route path="/sign-up" component={SignUpPage} />
+                <PrivateRoute path="/profile" component={ProfilePage} />
+                {/* <PrivateRoute path="/new-event" component={CreateEventPage} /> */}
                 <Route path="/new-event" component={CreateEventPage} />
                 <Route path="/event-page" component={EventPage}/>
                 <Route path="/" component={PostsListPage} />
