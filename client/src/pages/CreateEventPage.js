@@ -41,6 +41,35 @@ class CreateEventPage extends Component {
         }
     }
 
+    onClick = (event) => {
+        const myData = {
+            eventName: document.getElementById("eventName").value.trim(),
+            activityType: document.getElementById("activitiyType").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            zoomLink: document.getElementById("zoomLink").value.trim(),
+            dateTime: document.getElementById("dateTime").value.trim(),
+            bannerImg: this.state.bannerImg,
+        }
+          console.log(myData);
+          fetch("/api/event/", {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(myData),
+          })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
+            }
+            // throw new Error('Content validation');
+          })
+          .catch(err => {
+            alert("Event name already exists.");
+          }); 
+    }
+
     render() {
         return (
             <div>
