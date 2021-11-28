@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     class Event extends Model {}
 
     Event.init({
-        name: {
+        eventName: {
             type: DataTypes.STRING,
             unique: true,
             primaryKey: true,

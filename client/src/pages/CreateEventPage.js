@@ -10,7 +10,7 @@ class CreateEventPage extends Component {
         description: '',
         dateTime: '',
         zoomLink: '',
-        isOpen: false,
+        isOpen: true,
         hostUserName: '',
     }
 
@@ -46,9 +46,11 @@ class CreateEventPage extends Component {
             eventName: document.getElementById("eventName").value.trim(),
             activityType: document.getElementById("activitiyType").value.trim(),
             description: document.getElementById("description").value.trim(),
-            zoomLink: document.getElementById("zoomLink").value.trim(),
             dateTime: document.getElementById("dateTime").value.trim(),
+            zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
+            isOpen: this.state.isOpen,
+            hostUserName: 'Temporary host user.',
         }
           console.log(myData);
           fetch("/api/event/", {
