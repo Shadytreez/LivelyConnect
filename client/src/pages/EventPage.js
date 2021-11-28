@@ -9,29 +9,29 @@ const { Event } = require('../../../api/models/event');
 //   </Popup>
 
 
-function getEventName(props) {
-    return Event.name
-}
+// function getEventName(props) {
+//     return Event.name
+// }
 
-function getActivityType(props) {
-    return Event.activityType
-}
+// function getActivityType(props) {
+//     return Event.activityType
+// }
 
-function getDescription(props) {
-    return Event.description
-}
+// function getDescription(props) {
+//     return Event.description
+// }
 
-function getZoomLink(props) {
-    return Event.link
-}
+// function getZoomLink(props) {
+//     return Event.link
+// }
 
 class EventPage extends Component {
 
     state = {
-        name: this.getEventName,
-        activity: this.getActivityType,
-        description: this.getDescription,
-        zoom: this.getZoomLink,
+        name: '',//this.getEventName,
+        activity: '', //this.getActivityType,
+        description: '',//this.getDescription,
+        zoom: '' //this.getZoomLink,
     }
 
 
