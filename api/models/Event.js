@@ -29,12 +29,12 @@ module.exports = (sequelize, DataTypes) => {
             //     notEmpty: true,
             // },
         },
-        // dateTime: {
-        //     type: DataTypes.DATEONLY,
-        //     validate: {
-        //         notEmpty: true,
-        //     },
-        // },
+        dateTime: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: true,
+            },
+        },
         zoomLink: {
             type: DataTypes.STRING,
             // validate: {

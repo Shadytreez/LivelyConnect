@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
       eventName: req.body.eventName,
       activityType: req.body.activityType,
       description: req.body.description,
+      dateTime: req.body.dateTime,
       zoomLink: req.body.zoomLink,
       bannerImg: req.body.bannerImg,
       isOpen : req.body.isOpen,

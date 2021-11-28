@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AuthContext } from '../context/AuthContext';
 const isImageURL = require('valid-image-url');
 
 class CreateEventPage extends Component {
@@ -46,7 +47,7 @@ class CreateEventPage extends Component {
             eventName: document.getElementById("eventName").value.trim(),
             activityType: document.getElementById("activityType").value.trim(),
             description: document.getElementById("description").value.trim(),
-            // dateTime: document.getElementById("dateTime").value.trim(),
+            dateTime: document.getElementById("dateTime").value.trim(),
             zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
             isOpen: true,
