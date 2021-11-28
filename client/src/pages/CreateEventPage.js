@@ -84,7 +84,6 @@ class CreateEventPage extends Component {
                     width: 897.6   // 1920
                      }}> 
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100, alignItems: 'center' }} onChange={ this.imgURL }/>
-                    {/* <button id = 'submitBanner' onClick={ this.imgChange }>Show image!</button> */}
                 </div> { /* image of the banner  */ }
 
                 <div className = "container">
