@@ -1,8 +1,4 @@
 import React, { useContext } from 'react';
-<<<<<<< HEAD
-import { Redirect } from 'react-router-dom';
-=======
->>>>>>> main
 import { AuthContext } from '../context/AuthContext';
  
 // class ProfilePage extends React.Component {
@@ -80,7 +76,3 @@ const ProfilePage = () => {
 };
  
 export default ProfilePage;
-<<<<<<< HEAD
-
-=======
->>>>>>> main
