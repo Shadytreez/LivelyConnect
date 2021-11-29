@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
  
 // class ProfilePage extends React.Component {

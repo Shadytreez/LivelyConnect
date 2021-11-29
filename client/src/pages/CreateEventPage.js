@@ -3,7 +3,8 @@ import { AuthContext } from '../context/AuthContext';
 const isImageURL = require('valid-image-url');
 
 class CreateEventPage extends Component {
-
+    static contextType  = AuthContext
+    
     state = {
         bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
         eventName: '',
@@ -14,8 +15,15 @@ class CreateEventPage extends Component {
         isOpen: true,
         hostUserName: '',
     }
+    componentDidMount() {
+        const auth = this.context
+        this.setState({hostUserName : auth.user.user_name})
+        console.log(auth.user.user_name) 
+        console.log("TEST" + this.state.hostUserName)
+      }
 
     imgURL = (event) => {
+        
         if(isImageURL(event.target.value)){
             this.setState({ bannerImg: event.target.value })
         }
@@ -25,6 +33,7 @@ class CreateEventPage extends Component {
     }
 
     handleChange = (event) => {
+        
         if(event.target.id === 'eventName'){
             this.setState({ eventName: event.target.value })
         }
@@ -51,7 +60,7 @@ class CreateEventPage extends Component {
             zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
             isOpen: true,
-            hostUserName: 'Temporary host user.'
+            hostUserName: this.state.hostUserName,
         }
           console.log(myData);
           fetch("/api/event/", {
