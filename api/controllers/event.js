@@ -24,8 +24,17 @@ router.get('/:id', (req, res) => {
 // Creating an event
 router.post('/', (req, res) => {
     let { content } = req.body;
-
-    Event.create({ content })
+    console.log("TEST")
+    Event.create({
+      eventName: req.body.eventName,
+      activityType: req.body.activityType,
+      description: req.body.description,
+      dateTime: req.body.dateTime,
+      zoomLink: req.body.zoomLink,
+      bannerImg: req.body.bannerImg,
+      isOpen : req.body.isOpen,
+      hostUserName : req.body.hostUserName
+    })
       .then(post => {
         res.status(201).json(post);
       })
