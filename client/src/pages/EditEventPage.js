@@ -17,6 +17,9 @@ import { Component } from "react";
 //     return Event.link
 // }
 
+
+// USE PUSH TO UPDATE
+
 class EditEventPage extends Component{
     render() {
         return (

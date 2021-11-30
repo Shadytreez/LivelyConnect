@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DateTime from 'react-datetime';
+import DateTimePicker from 'react-datetime-picker';
 const isImageURL = require('valid-image-url');
 
 class CreateEventPage extends Component {
@@ -72,6 +74,18 @@ class CreateEventPage extends Component {
           }); 
     }
 
+    handleDateChange = (date) => {
+        if(date !== null){
+            let dateTime = date.toDateString() + " at " + date.toLocaleTimeString('en-us').replace(':00 ', ' ');
+            this.setState({ dateTime })
+            console.log(dateTime)
+        }
+        else{
+            this.setState({ dateTime: "" })
+        }
+        
+    }
+
     render() {
         return (
             <div style = {{ textAlign: 'center' }}>
@@ -86,7 +100,7 @@ class CreateEventPage extends Component {
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100, alignItems: 'center' }} onChange={ this.imgURL }/>
                 </div> { /* image of the banner  */ }
 
-                <div className = "container">
+                <div className = "container" style = {{ marginBottom: 100 }}>
                     <div className = "row row-cols-2">
                         <div className = "col">
                             { /* Event name, description, activity type */}
@@ -100,7 +114,15 @@ class CreateEventPage extends Component {
                         <div className = "col">
                             { /* time of event, day, zoom link, rsvp button */}
                             <br/><br/>
-                            <input id = 'dateTime' placeholder = '' type = 'date' style = {{ width: '90%' }}/><br/><br/>
+                            <text><small><i>Please insert the hour according to the 24-hour clock. An input field highlighted red indicates that you have entered an invalid value.</i></small></text><br/>   
+                            <DateTimePicker id = 'dateTime' maxDate = {new Date('December 31, 9999 23:59:59 GMT-04:00')}
+                                hourPlaceholder = '23' minutePlaceholder = '59' format = "MM/dd/y @ HH:mm" 
+                                monthPlaceholder = '01' dayPlaceholder = '31' yearPlaceholder = '2000'
+                                disableCalendar = {true} disableClock = {true} require = {true}
+                                
+                                onChange = { this.handleDateChange } /><br/>
+                            <p> <b>Date to display:</b><br/>
+                                {this.state.dateTime} </p><br/>
                             <textarea id = 'zoomLink' rows = '5' cols = '23' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
                             <button id = 'submit' onClick = { this.onClick }>Submit</button><br/><br/>
                         </div>
