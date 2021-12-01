@@ -77,6 +77,7 @@ class App extends React.Component {
                 {/* <PrivateRoute path="/new-event" component={CreateEventPage} /> */}
                 <Route path="/new-event" component={CreateEventPage} />
                 <Route path="/event-page" component={EventPage}/>
+                <Route path="/edit-event" component={EditEventPage}/>
                 <Route path="/" component={PostsListPage} />
               </Switch>
             

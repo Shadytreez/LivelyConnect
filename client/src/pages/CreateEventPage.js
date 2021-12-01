@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 const isImageURL = require('valid-image-url');
 
 class CreateEventPage extends Component {
-    static contextType  = AuthContext
+    static contextType = AuthContext
     
     state = {
         bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
@@ -21,7 +21,7 @@ class CreateEventPage extends Component {
         this.setState({hostUserName : auth.user.user_name})
         console.log(auth.user.user_name) 
         console.log("TEST" + this.state.hostUserName)
-      }
+    }
 
     imgURL = (event) => {
         
@@ -92,7 +92,6 @@ class CreateEventPage extends Component {
         else{
             this.setState({ dateTime: "" })
         }
-        
     }
 
     render() {
