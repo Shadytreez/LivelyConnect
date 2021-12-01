@@ -11,32 +11,29 @@ import { AuthContext } from '../context/AuthContext';
 //     <div>Popup content here !!</div>
 //   </Popup>
 
-
-// function getEventName(props) {
-//     return Event.name
-// }
-
-// function getActivityType(props) {
-//     return Event.activityType
-// }
-
-// function getDescription(props) {
-//     return Event.description
-// }
-
-// function getZoomLink(props) {
-//     return Event.link
-// }
-
 class EventPage extends Component {
 
     state = {
-        name: '',//this.getEventName,
-        activity: '', //this.getActivityType,
-        description: '',//this.getDescription,
-        zoom: '' //this.getZoomLink,
+        bannerImg: 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg',
+        eventName: '',
+        activityType: '',
+        description: '',
+        dateTime: '',
+        zoomLink: '',
+        isOpen: true,
+        hostUserName: '',
     }
 
+    getEvent() {
+        fetch("/event/:eventName")
+        .then(res => res.json())
+        .then(data => {
+            this.setState({
+                bannerImg, eventName, activityType, description, dateTime,
+                zoomLink, isOpen, hostUserName
+            })
+        })
+    }
 
     render() {
         return (
