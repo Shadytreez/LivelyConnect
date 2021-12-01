@@ -5,7 +5,7 @@ const { sequelize } = require('../../../learn-sequelize/models');
 module.exports = (sequelize, DataTypes) => {
     class Attending extends Model {}
 
-    Event.init({
+    Attending.init({
         user_name: {
             type: DataTypes.STRING,
             // unique: true,
