@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { AuthContext } from '../context/AuthContext';
+
 // import Popup from 'reactjs-popup';
 // const { Event } = require('../../../api/models/event');
 
@@ -43,7 +45,7 @@ class EventPage extends Component {
                     <img id = "banner" src = 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg'
                         style={{ height: 504.9, width: 897.6}}/>
                 </div>
-                <div className = "container" style = {{ marginBottom: 120 }}>
+                <div className = "container" style = {{ marginBottom: 100 }}>
                     <div>
                         <h2 id = 'eventName' size = '81'>This Is The Event Name</h2><br/><br/>
                     </div>
