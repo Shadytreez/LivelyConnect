@@ -1,24 +1,24 @@
 import React from 'react';
-
+import { Redirect } from 'react-router-dom';
 class EventCard extends React.Component {
     // constructor(props) {
     //     super(props); 
-    //     this.state = {
-    //         title: this.props.title,
-    //         time: this.props.time,
-    //         imageUrl: this.props.image,
-    //         activity: this.props.activity,
-    //         eventLink: this.props.eventLink,
-            
-    //     };
+        state = {
+            eventPage: false,
+            redirectLink: "/event-page/"+this.props.card.id
+        };
     //   }
     
       
-  
+    onClick = (event) => {
+      console.log(this.state.redirectLink)
+      this.setState({eventPage : true})
+   }
 
 
     render() {
-        return <div>
+        if(this.state.eventPage) return <Redirect to={this.state.redirectLink} />;
+        return <div onClick = { this.onClick }>
             <div className="container-fluid text center ">
             <div className="row border">
               <div className="row1left col-5">
