@@ -1,4 +1,5 @@
 import { Component } from "react";
+import DateTimePicker from 'react-datetime-picker';
 // const { Event } = require('../../../api/models/Event');
 
 // function getEventName(props) {

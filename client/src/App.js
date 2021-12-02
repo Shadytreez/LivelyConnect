@@ -19,6 +19,7 @@ import './App.css';
 import CreateEventPage from './pages/CreateEventPage';
 import EventPage from './pages/EventPage';
 import EventListPage from './pages/EventListPage';
+import EditEventPage from './pages/EditEventPage';
 
 
 function Navigation(props) {
@@ -81,8 +82,8 @@ class App extends React.Component {
                 <Route path="/sign-up" component={SignUpPage} />
                 <Route path="/list-of-events" component={EventListPage} />
                 <PrivateRoute path="/profile" component={ProfilePage} />
-                {/* <PrivateRoute path="/new-event" component={CreateEventPage} /> */}
-                <Route path="/new-event" component={CreateEventPage} />
+                <PrivateRoute path="/new-event" component={CreateEventPage} />
+                {/* <Route path="/new-event" component={CreateEventPage} /> */}
                 <Route path="/event-page" component={EventPage}/>
                 <Route path="/edit-event" component={EditEventPage}/>
                 <Route path="/" component={PostsListPage} />
