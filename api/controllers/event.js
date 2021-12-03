@@ -11,7 +11,7 @@ router.get('/', (req,res) => {
   
 // Get event with that event name
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params.id;
     Event.findByPk(id)
         .then(post => {
             if(!post) {
