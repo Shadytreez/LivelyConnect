@@ -24,13 +24,24 @@ class EventPage extends Component {
         hostUserName: '',
     }
 
-    getEvent() {
-        fetch("/event/:eventName")
+
+
+    componentDidMount() {
+        fetch("/api/events/:id")
         .then(res => res.json())
         .then(data => {
             this.setState({
-                bannerImg, eventName, activityType, description, dateTime,
-                zoomLink, isOpen, hostUserName
+                // bannerImg, eventName, activityType, description, dateTime,
+                // zoomLink, isOpen, hostUserName
+
+                bannerImg: data.bannerImg, 
+                eventName: data.eventName, 
+                activityType: data.activityType, 
+                description: data.description, 
+                dateTime: data.dateTime,
+                zoomLink: data.zoomLink, 
+                isOpen: data.isOpen, 
+                hostUserName: data.hostUserName
             })
         })
     }
