@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { AuthContext } from '../context/AuthContext';
+// import { AuthContext } from '../context/AuthContext';
 
 // import Popup from 'reactjs-popup';
 // const { Event } = require('../../../api/models/event');
@@ -27,7 +27,7 @@ class EventPage extends Component {
 
 
     componentDidMount() {
-        fetch("/api/events/:id")
+        fetch("/api/event/:id")
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -43,6 +43,7 @@ class EventPage extends Component {
                 isOpen: data.isOpen, 
                 hostUserName: data.hostUserName
             })
+            console.log(res.data)
         })
     }
 
