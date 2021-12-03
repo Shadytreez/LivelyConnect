@@ -24,10 +24,8 @@ class EventPage extends Component {
         hostUserName: '',
     }
 
-
-
     componentDidMount() {
-        fetch("/api/event/:id")
+        fetch("/api/event/:id", {method: "GET"})
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -43,8 +41,13 @@ class EventPage extends Component {
                 isOpen: data.isOpen, 
                 hostUserName: data.hostUserName
             })
-            console.log(res.data)
+            console.log(data)
         })
+    }
+
+    // RSVP for event
+    onClick = (event) => {
+
     }
 
     render() {
@@ -70,7 +73,7 @@ class EventPage extends Component {
                             <br/>
                             <text id = 'dateTime' placeholder = '' type = 'date' >Date of event.</text><br/><br/>
                             <a id = 'link' placeholder = 'Zoom Link' href = 'www.google.com'>Zoom link</a><br/><br/> {/* make zoom link taller */}
-                            <button id = 'rsvp'>RSVP Event</button>
+                            <button id = 'rsvp' onClick = {this.onClick} >RSVP Event</button>
                         </div>
                     </div>
                 </div>
