@@ -5,7 +5,7 @@ const { Event } = db;
 
 // Retrieve all events
 router.get('/', (req,res) => {
-    Post.findAll({})
+    Event.findAll({})
       .then(posts => res.json(posts));
   });
   

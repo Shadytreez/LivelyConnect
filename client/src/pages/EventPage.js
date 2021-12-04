@@ -43,7 +43,7 @@ class EventPage extends Component {
                 isOpen: data.isOpen, 
                 hostUserName: data.hostUserName
             })
-            console.log(res.data)
+            console.log(data)
         })
     }
 
