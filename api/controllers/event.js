@@ -22,17 +22,28 @@ router.get('/:id', (req, res) => {
 });
 
 // Creating an event
+// Creating an event
 router.post('/', (req, res) => {
-    let { content } = req.body;
+  let { content } = req.body;
+  console.log("TEST")
+  Event.create({
+    eventName: req.body.eventName,
+    activityType: req.body.activityType,
+    description: req.body.description,
+    dateTime: req.body.dateTime,
+    zoomLink: req.body.zoomLink,
+    bannerImg: req.body.bannerImg,
+    isOpen : req.body.isOpen,
+    hostUserName : req.body.hostUserName
+  })
+    .then(post => {
+      res.status(201).json(post);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
-    Event.create({ content })
-      .then(post => {
-        res.status(201).json(post);
-      })
-      .catch(err => {
-        res.status(400).json(err);
-      });
-  });
 
   // delete the event
   router.delete('/:id', (req, res) => {

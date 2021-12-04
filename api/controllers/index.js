@@ -13,6 +13,7 @@ router.use('/posts', postsController);
 router.use('/user', userController);
 router.use('/application-configuration', appConfigController);
 router.use('/event', eventController);
-
+router.use('/auth', authController);
+router.use('/attending', attendingController);
 
 module.exports = router;
