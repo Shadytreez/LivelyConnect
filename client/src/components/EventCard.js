@@ -5,7 +5,7 @@ class EventCard extends React.Component {
     //     super(props); 
         state = {
             eventPage: false,
-            redirectLink: "/event-page/"+this.props.card.id
+            redirectLink: "/event-page/?id="+this.props.card.id
         };
     //   }
     
