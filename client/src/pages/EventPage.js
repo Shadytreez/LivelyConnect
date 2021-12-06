@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { AuthContext } from '../context/AuthContext';
+import Popup from 'reactjs-popup';
 
-// import Popup from 'reactjs-popup';
 // const { Event } = require('../../../api/models/event');
 
 // POP-UP EXAMPLE:
@@ -73,6 +73,17 @@ class EventPage extends Component {
                             <br/>
                             <text id = 'dateTime' placeholder = '' type = 'date' >Date of event: {this.dateTime}</text><br/><br/>
                             <a id = 'link' placeholder = 'Zoom Link' href = 'www.google.com'>Zoom link: {this.zoomLink}</a><br/><br/> {/* make zoom link taller */}
+                            <Popup closeOnDocumentClick modal = {true} trigger={<button>Trigger</button>} position="top center"
+                                style={{
+                                    width: '100%',
+                                    textAlign: 'center',
+                                    padding: '5px',
+                                    display: 'block',
+                                    background: '#ffffff',
+                                    border
+                                }}>
+                                <div>List of Participants!</div>
+                            </Popup><br/>
                             <button id = 'rsvp' onClick = {this.onClick} >RSVP Event</button>
                         </div>
                     </div>
