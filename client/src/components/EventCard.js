@@ -19,19 +19,23 @@ class EventCard extends React.Component {
     render() {
         if(this.state.eventPage) return <Redirect to={this.state.redirectLink} />;
         return <div onClick = { this.onClick }>
-            <div className="container-fluid text center ">
-            <div className="row border">
-              <div className="row1left col-5">
-                {/* <input className="form-control-lg" type="text" placeholder="Event Title" value= {this.state.title} readOnly /><br />
-                <input className="form-control-md" type="text" placeholder="Time/Location" value= {this.state.time} readOnly /><br />
-                <input className="form-control-md" type="text" placeholder="Activity Type" value= {this.state.activity} readOnly /><br />
-                <input className="form-control-md" type="text" placeholder="Event Link" value= {this.state.eventLink} readOnly /><br /> */}
-                <input className="form-control-lg" type="text" placeholder="Event Name" value= {this.props.card.eventName} readOnly /> <br />
-                <input className="form-control-md" style={{width:250}} type="text" placeholder="Time/Location" value= {this.props.card.dateTime} readOnly /> <br />
-                <input className="form-control-md" type="text" placeholder="Activity Type" value= {this.props.card.activityType} readOnly /> <br />
-                <input className="form-control-md" type="text" placeholder="Event Link" value= {this.props.card.zoomLink} readOnly /> <br />
+            <div >
+            <div className="row border border-dark">
+              <div className="row1left col-7">
+                <h3> {this.props.card.eventName} </h3> <br />
+                <p> {this.props.card.activityType} </p> <br />
+                <p> {this.props.card.dateTime} </p> 
               </div>
-              <div className="row1right col-5"><img src={this.bannerImg} alt="" width={505} height={140} /></div>
+              <div className="row1right col-5" style={{ 
+                    backgroundImage: `url(${this.props.card.bannerImg})`, 
+                    backgroundSize: '100% 100%', 
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    height: 200, // 1080 
+                    width: 505   // 1920
+                     }}>
+                {/* <img src={this.bannerImg} alt="" width={505} height={140} /> */}
+              </div>
             </div>
 
             </div>

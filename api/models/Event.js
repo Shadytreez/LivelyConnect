@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             // },
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             // validate: {
             //     len: [3, 250],
             //     notEmpty: true,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         zoomLink: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             // validate: {
             //     len: [3, 250],
             //     notEmpty: true,

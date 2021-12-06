@@ -57,7 +57,7 @@ class CreateEventPage extends Component {
             eventName: document.getElementById("eventName").value.trim(),
             activityType: document.getElementById("activityType").value.trim(),
             description: document.getElementById("description").value.trim(),
-            dateTime: document.getElementById("dateTime").value.trim(),
+            dateTime: this.state.dateTime,
             zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
             isOpen: true,
