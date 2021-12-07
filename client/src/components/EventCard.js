@@ -37,7 +37,7 @@ class EventCard extends React.Component {
                 {/* <img src={this.bannerImg} alt="" width={505} height={140} /> */}
               </div>
             </div>
-
+            <br />        
             </div>
 
         </div>
