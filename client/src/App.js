@@ -66,7 +66,7 @@ class App extends React.Component {
   render() {
     return (
       <div class="container">
-        <img src={Logo}  width="1000" height="100"/>
+        <img src={Logo}  width="1000" height="200"/>
         <div class="row">
         <AuthProvider>
         <Router>
@@ -85,7 +85,7 @@ class App extends React.Component {
                 <PrivateRoute path="/new-event" component={CreateEventPage} />
                 <Route path="/event-page" component={EventPage}/>
                 <Route path="/edit-event" component={EditEventPage}/>
-                <Route path="/" component={PostsListPage} />
+                <Route path="/" component={EventListPage} />
               </Switch>
             
           
