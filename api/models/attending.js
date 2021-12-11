@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             //     notEmpty: true,
             // },
         },
-        user_linkedln: {
+        user_linkedIn: {
             type: DataTypes.STRING,
            
         },
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
            
         },
-        event_name: {
+        event_id: {
             type: DataTypes.STRING,
             // validate: {
             //     notEmpty: true,

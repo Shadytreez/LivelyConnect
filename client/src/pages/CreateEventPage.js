@@ -57,7 +57,7 @@ class CreateEventPage extends Component {
             eventName: document.getElementById("eventName").value.trim(),
             activityType: document.getElementById("activityType").value.trim(),
             description: document.getElementById("description").value.trim(),
-            dateTime: this.state.dateTime,
+            dateTime: document.getElementById("dateTime").value.trim(),
             zoomLink: document.getElementById("zoomLink").value.trim(),
             bannerImg: this.state.bannerImg,
             isOpen: true,
@@ -108,14 +108,14 @@ class CreateEventPage extends Component {
                     <input placeholder = 'image URL' size = '50' type = 'text' style={{ marginTop: 100, alignItems: 'center' }} onChange={ this.imgURL }/>
                 </div> { /* image of the banner  */ }
 
-                <div className = "container" style = {{ marginBottom: 100 }}>
+                <div className = "container" style = {{ marginBottom: 150 }}>
                     <div className = "row row-cols-2">
                         <div className = "col">
                             { /* Event name, description, activity type */}
                             <br/><br/>
-                            <input id = 'eventName' type = 'text' placeholder = 'Name of the event:' style = {{ width: '100%' }}/><br/><br/>
-                            <textarea id = 'activityType' rows= '2' cols= '75' placeholder = 'What kind of activity is this?'></textarea><br/><br/>
-                            <textarea id = 'description' rows = '15' cols = '75' placeholder = 'What can we expect from this event?'></textarea>
+                            <input id = 'eventName' type = 'text' placeholder = 'Name of the event:' style = {{ width: '100%', borderRadius: 15, borderStyle: 'inset' }}/><br/><br/>
+                            <textarea id = 'activityType' rows= '2' cols= '75' placeholder = 'What kind of activity is this?' style = {{ borderRadius: 15, borderStyle: 'inset' }}></textarea><br/><br/>
+                            <textarea id = 'description' rows = '15' cols = '75' placeholder = 'What can we expect from this event?' style = {{ borderRadius: 15, borderStyle: 'inset' }}></textarea>
                             <br/><br/>
                         </div>
                         
@@ -131,8 +131,8 @@ class CreateEventPage extends Component {
                                 onChange = { this.handleDateChange } /><br/>
                             <p> <b>Date to display:</b><br/>
                                 {this.state.dateTime} </p><br/>
-                            <textarea id = 'zoomLink' rows = '5' cols = '23' placeholder = 'Zoom Link'/><br/><br/> {/* set max height */}
-                            <button id = 'submit' onClick = { this.onClick }>Submit</button><br/><br/>
+                            <textarea id = 'zoomLink' rows = '5' cols = '23' placeholder = 'Zoom Link' style = {{ borderRadius: 15, borderStyle: 'inset' }} /><br/><br/> {/* set max height */}
+                            <button id = 'submit' onClick = { this.onClick } style = {{ borderRadius: 15 }}>Submit</button><br/><br/>
                         </div>
                     </div>
                 </div>
