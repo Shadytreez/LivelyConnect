@@ -10,9 +10,9 @@ router.post('/', (req, res) => {
     Attending.create({
         user_name: req.body.user_name,
         name: req.body.name,
-        user_linkedln: req.body.user_linkedln,
+        user_linkedIn: req.body.user_linkedIn,
         user_image: req.body.user_image,
-        event_name: req.body.event_name
+        event_id: req.body.event_id
     })
       .then(post => {
         res.status(201).json(post);
@@ -29,10 +29,10 @@ router.post('/', (req, res) => {
     console.log("TEST")
     Attending.findAll({
         where: {
-            event_name: req.body.event_name
+            event_id: req.body.event_id
         }
     })
-      .then(post => {
+      .then(data => {
         res.send(data);
         res.status(201).json(post);
       })
