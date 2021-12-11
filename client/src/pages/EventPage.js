@@ -17,6 +17,7 @@ class EventPage extends Component {
         participants: [],
         eventId: '',
         listOfAttendees: [],
+        isRSVP: false,
     }
 
     async componentDidMount() {
@@ -46,6 +47,7 @@ class EventPage extends Component {
             console.log(responseJson.bannerImg)
         })
 
+        const auth = this.context
         // List of Attendees
         const listOfAttend = {
             event_id: this.state.eventId
@@ -61,6 +63,11 @@ class EventPage extends Component {
         .then(res => {
             if(res.ok) {
                 this.setState({ listOfAttendees: res })
+                for(let attendee in this.state.listOfAttendees){
+                    if(auth.user.user_name === attendee.user_name){
+                        this.setState({ isRSVP: true })
+                    }
+                }
                 return res.json()
             }
         })
@@ -92,62 +99,107 @@ class EventPage extends Component {
           })
           .then(res => {
             if(res.ok) {
-              return res.json()
+            window.location.reload();
+            // return res.json()
             }
             // throw new Error('Content validation');
           })
           .catch(err => {
-            alert("Event name already exists.");
+            alert("Unable to RSVP.");
           }); 
     }
 
     render() {
-        return (
-            <div style = {{ textAlign: 'center' }}>
-                
-                <div style ={{ marginBottom: 50 }}>
-                    <img id = "banner" src = {this.state.bannerImg}
-                        style={{ height: 504.9, width: 897.6}}/>
-                </div>
-
-                <div className = "container" style = {{ marginBottom: 150 }}>
+        if(this.state.isRSVP){
+            return (
+                <div style = {{ textAlign: 'center' }}>
                     
-                    <div>
-                        <h2 id = 'eventName' size = '81'>Event Name: {this.state.eventName}</h2><br/><br/>
+                    <div style ={{ marginBottom: 50 }}>
+                        <img id = "banner" src = {this.state.bannerImg}
+                            style={{ height: 504.9, width: 897.6}}/>
+                    </div>
+    
+                    <div className = "container" style = {{ marginBottom: 150 }}>
+                        
+                        <div>
+                            <h2 id = 'eventName' size = '81'>Event Name: {this.state.eventName}</h2><br/><br/>
+                        </div>
+    
+                        <div className = "row row-cols-2">
+                            <div className = "col"  style = {{ textAlign: 'left', marginLeft: 25 }}>
+                                { /* Event name, description, activity type */}
+                                <p id = 'activityType' rows= '2' cols= '75'>Activity Types: {this.state.activityType}</p><br/>
+                                <p id = 'description' rows = '15' cols = '75'>Description: {this.state.description}</p>
+                            </div>
+                            <div className = "col">
+                                { /* time of event, day, zoom link, rsvp button */}
+                                <br/>
+                                <text id = 'dateTime' placeholder = '' type = 'date' >Date and Time: {this.state.dateTime}</text><br/><br/>
+                                <a id = 'link' placeholder = 'Zoom Link' href = {this.state.zoomLink}>Zoom link</a><br/><br/> {/* make zoom link taller */}
+                            </div>
+                        </div>
+                        <br/><br/><br/>
+                        <div>                    
+                            <h3 style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
+                            {   this.state.listOfAttendees.map((attendee) => {
+                                return 
+                                <div>
+                                    <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
+                                </div>
+                            })
+                            }
+                        </div>
+                    </div>
+    
+                </div>
+            )
+        }
+        else {
+            return (
+                <div style = {{ textAlign: 'center' }}>
+                    
+                    <div style ={{ marginBottom: 50 }}>
+                        <img id = "banner" src = {this.state.bannerImg}
+                            style={{ height: 504.9, width: 897.6}}/>
                     </div>
 
-                    <div className = "row row-cols-2">
-                        <div className = "col"  style = {{ textAlign: 'left', marginLeft: 25 }}>
-                            { /* Event name, description, activity type */}
-                            <p id = 'activityType' rows= '2' cols= '75'>Activity Types: {this.state.activityType}</p><br/>
-                            <p id = 'description' rows = '15' cols = '75'>Description: {this.state.description}</p>
+                    <div className = "container" style = {{ marginBottom: 150 }}>
+                        
+                        <div>
+                            <h2 id = 'eventName' size = '81'>Event Name: {this.state.eventName}</h2><br/><br/>
                         </div>
-                        <div className = "col">
-                            { /* time of event, day, zoom link, rsvp button */}
-                            <br/>
-                            <text id = 'dateTime' placeholder = '' type = 'date' >Date and Time: {this.state.dateTime}</text><br/><br/>
-                            <a id = 'link' placeholder = 'Zoom Link' href = {this.state.zoomLink}>Zoom link</a><br/><br/> {/* make zoom link taller */}
-                            <button id = 'rsvp' onClick ={ this.clickRSVP } style = {{ borderRadius: 10, height: 40 }}>
-                                RSVP Event
-                            </button>
-                        </div>
-                    </div>
-                    <br/><br/><br/>
-                    <div>                    
-                        <h3 onClick = { this.clickLOA } style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
-                        {   this.state.listOfAttendees.map((attendee) =>{
-                            return 
-                            <div>
-                                <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
+
+                        <div className = "row row-cols-2">
+                            <div className = "col"  style = {{ textAlign: 'left', marginLeft: 25 }}>
+                                { /* Event name, description, activity type */}
+                                <p id = 'activityType' rows= '2' cols= '75'>Activity Types: {this.state.activityType}</p><br/>
+                                <p id = 'description' rows = '15' cols = '75'>Description: {this.state.description}</p>
                             </div>
-                        })
-                        }
+                            <div className = "col">
+                                { /* time of event, day, zoom link, rsvp button */}
+                                <br/>
+                                <text id = 'dateTime' placeholder = '' type = 'date' >Date and Time: {this.state.dateTime}</text><br/><br/>
+                                <button id = 'rsvp' onClick ={ this.clickRSVP } style = {{ borderRadius: 10, height: 40 }}>
+                                    RSVP Event
+                                </button> {/* make RSVP disappear after clicking */}
+                            </div>
+                        </div>
+                        <br/><br/><br/>
+                        <div>                    
+                            <h3 style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
+                            {   this.state.listOfAttendees.map((attendee) => {
+                                return 
+                                <div>
+                                    <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
+                                </div>
+                            })
+                            }
+                        </div>
                     </div>
 
                 </div>
-
-            </div>
-        )
+            )
+        }
     }
 }
 
