@@ -16,7 +16,7 @@ class EventPage extends Component {
         currentUserName: '',
         participants: [],
         eventId: '',
-        // listOfAttendees
+        listOfAttendees: [],
     }
 
     async componentDidMount() {
@@ -45,6 +45,28 @@ class EventPage extends Component {
             })
             console.log(responseJson.bannerImg)
         })
+
+        // List of Attendees
+        const listOfAttend = {
+            event_id: this.state.eventId
+        }
+        fetch("/api/attending/listOfAttendees", {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(listOfAttend),
+        })
+        .then(res => {
+            if(res.ok) {
+                this.setState({ listOfAttendees: res })
+                return res.json()
+            }
+        })
+        .catch(err => {
+            this.setState({ listOfAttendees: [] })
+        }); 
     }
 
     // RSVP for event
@@ -112,7 +134,14 @@ class EventPage extends Component {
                     </div>
                     <br/><br/><br/>
                     <div>                    
-                        <button style = {{ borderRadius: 10, height: 40 }}>List of Attendees</button>
+                        <h3 onClick = { this.clickLOA } style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
+                        {   this.state.listOfAttendees.map((attendee) =>{
+                            return 
+                            <div>
+                                <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
+                            </div>
+                        })
+                        }
                     </div>
 
                 </div>

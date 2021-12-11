@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     console.log("TEST")
     Attending.findAll({
         where: {
-            event_name: req.body.event_name
+            event_id: req.body.event_id
         }
     })
       .then(post => {
