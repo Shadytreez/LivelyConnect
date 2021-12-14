@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Attendee from '../components/Attendee';
-import{ Redirect  } from 'react-router-dom';
 class EventPage extends Component {
     static contextType = AuthContext
     state = {
@@ -19,8 +18,7 @@ class EventPage extends Component {
         eventId: '',
         listOfAttendees: [],
         isRSVP: false,
-        hostUserName: '',
-        loginRSVP: false
+        hostUserName: ''
     }
 
     async componentDidMount() {
@@ -95,42 +93,36 @@ class EventPage extends Component {
             }
 
             const auth = this.context
-            if(!auth.isAuthenticated){
-                console.log("iefhdsoifhodsifhidsofh")
-                this.setState({loginRSVP : true})
-            }else{
-                const myData = {
-                    event_id: this.state.eventId,
-                    user_name: auth.user.user_name,
-                    name: auth.user.name,
-                    user_linkedIn: auth.user.linkedln,
-                    user_image: auth.user.image,
-                }
-                console.log(myData);
-                fetch("/api/attending/", {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(myData),
-                })
-                .then(res => {
-                    if(res.ok) {
-                    window.location.reload();
-                    // return res.json()
-                    }
-                    // throw new Error('Content validation');
-                })
-                .catch(err => {
-                    alert("Unable to RSVP.");
-                });
+
+            const myData = {
+                event_id: this.state.eventId,
+                user_name: auth.user.user_name,
+                name: auth.user.name,
+                user_linkedIn: auth.user.linkedln,
+                user_image: auth.user.image,
             }
-             
+            console.log(myData);
+            fetch("/api/attending/", {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(myData),
+            })
+            .then(res => {
+                if(res.ok) {
+                window.location.reload();
+                // return res.json()
+                }
+                // throw new Error('Content validation');
+            })
+            .catch(err => {
+                alert("Unable to RSVP.");
+            }); 
         }
 
     render() {
-        if(this.state.loginRSVP) return <Redirect to="/sign-in" />;
         if(this.state.isRSVP){
             return (
                 <div style = {{ textAlign: 'center' }}>
@@ -175,7 +167,7 @@ class EventPage extends Component {
     
                 </div>
             )
-        }else{
+        } else{
             return (
                 <div style = {{ textAlign: 'center' }}>
                     
