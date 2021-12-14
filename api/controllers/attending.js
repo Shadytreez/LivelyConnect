@@ -23,16 +23,16 @@ router.post('/', (req, res) => {
   });
 
   //to get all user that rsvp for the event
-  router.get('/listOfAttendees', (req, res) => {
+  router.get('/:id', (req, res) => {
     let { content } = req.body;
-
+    const id = req.params.id;
     console.log("TEST")
     Attending.findAll({
         where: {
-            event_id: req.body.event_id
+            event_id: id
         }
     })
-      .then(post => {
+      .then(data => {
         res.send(data);
         res.status(201).json(post);
       })
