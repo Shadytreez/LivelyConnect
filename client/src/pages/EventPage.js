@@ -1,12 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useContext, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-<<<<<<< HEAD
-
-=======
 import Attendee from '../components/Attendee';
->>>>>>> main
 class EventPage extends Component {
     static contextType = AuthContext
     state = {
@@ -22,18 +18,11 @@ class EventPage extends Component {
         eventId: '',
         listOfAttendees: [],
         isRSVP: false,
-<<<<<<< HEAD
-=======
         hostUserName: ''
->>>>>>> main
     }
 
     async componentDidMount() {
-<<<<<<< HEAD
-
-=======
         //to get the infomation from the url and use that infomation to do a get requestion from the backend 
->>>>>>> main
         const queryString = window.location.search;
         console.log(queryString);
         
@@ -42,10 +31,6 @@ class EventPage extends Component {
         const id = urlParams.get('id')
         console.log(id);
         this.setState({ eventId: id })
-<<<<<<< HEAD
-
-=======
->>>>>>> main
         await fetch("/api/event/"+id)
         .then(response  => response.json())
         .then(responseJson  => {
@@ -62,68 +47,6 @@ class EventPage extends Component {
             console.log(responseJson.bannerImg)
         })
 
-<<<<<<< HEAD
-        const auth = this.context
-        // List of Attendees
-        const listOfAttend = {
-            event_id: this.state.eventId
-        }
-        fetch("/api/attending/listOfAttendees", {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(listOfAttend),
-        })
-        .then(res => {
-            if(res.ok) {
-                this.setState({ listOfAttendees: res })
-                for(let attendee in this.state.listOfAttendees){
-                    if(auth.user.user_name === attendee.user_name){
-                        this.setState({ isRSVP: true })
-                    }
-                }
-                return res.json()
-            }
-        })
-        .catch(err => {
-            this.setState({ listOfAttendees: [] })
-        }); 
-    }
-
-    // RSVP for event
-    clickRSVP = (event) => {
-        // add user to attendingTable
-        const auth = this.context
-
-        const myData = {
-            event_id: this.state.eventId,
-            user_name: auth.user.user_name,
-            name: auth.user.name,
-            user_linkedIn: auth.user.user_linkedIn,
-            user_image: auth.user.user_image,
-        }
-          console.log(myData);
-          fetch("/api/attending/", {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(myData),
-          })
-          .then(res => {
-            if(res.ok) {
-            window.location.reload();
-            // return res.json()
-            }
-            // throw new Error('Content validation');
-          })
-          .catch(err => {
-            alert("Unable to RSVP.");
-          }); 
-=======
         //this fetch is to get all of the attendees that rsvp for the event, but also to see if the user is rsvp or not
         const auth = this.context
         // List of Attendees
@@ -156,12 +79,19 @@ class EventPage extends Component {
    } catch (err) {
      console.error(err.message);
    } 
->>>>>>> main
     }
 
        // RSVP for event
         clickRSVP = (event) => {
             // add user to attendingTable
+            const account = useContext(AuthContext)
+            if(!account.isAuthenticated){
+                <Redirect to ={{
+                    pathname: '/sign-in',
+                    state: { from: this.props.location }
+                }}/>
+            }
+
             const auth = this.context
 
             const myData = {
@@ -220,20 +150,6 @@ class EventPage extends Component {
                                 <text id = 'dateTime' placeholder = '' type = 'date' >Date and Time: {this.state.dateTime}</text><br/><br/>
                                 <a id = 'link' placeholder = 'Zoom Link' href = {this.state.zoomLink}>Zoom link</a><br/><br/> {/* make zoom link taller */}
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <br/><br/><br/>
-                        <div>                    
-                            <h3 style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
-                            {   this.state.listOfAttendees.map((attendee) => {
-                                return 
-                                <div>
-                                    <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
-                                </div>
-                            })
-                            }
-                        </div>
-=======
                         </div>
                         <br/><br/><br/>
                         <div>                    
@@ -247,17 +163,11 @@ class EventPage extends Component {
                             } */}
                             {this.state.listOfAttendees}
                         </div>
->>>>>>> main
                     </div>
     
                 </div>
             )
-<<<<<<< HEAD
-        }
-        else {
-=======
         }else{
->>>>>>> main
             return (
                 <div style = {{ textAlign: 'center' }}>
                     
@@ -290,32 +200,21 @@ class EventPage extends Component {
                         <br/><br/><br/>
                         <div>                    
                             <h3 style = {{ borderRadius: 10, height: 40 }}>List of Attendees</h3>
-<<<<<<< HEAD
-                            {   this.state.listOfAttendees.map((attendee) => {
-=======
                             {/* {   this.state.listOfAttendees.map((attendee) => {
->>>>>>> main
                                 return 
                                 <div>
                                     <a href = { attendee.user_linkedIn }>{ attendee.user_name }</a>
                                 </div>
                             })
-<<<<<<< HEAD
-                            }
-=======
                             } */}
                             {this.state.listOfAttendees}
->>>>>>> main
                         </div>
                     </div>
 
                 </div>
             )
         }
-<<<<<<< HEAD
-=======
         
->>>>>>> main
     }
 }
 
