@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Attendee from '../components/Attendee';
+
 class EventPage extends Component {
     static contextType = AuthContext
     state = {
