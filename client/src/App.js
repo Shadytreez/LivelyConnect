@@ -26,8 +26,8 @@ function Navigation(props) {
   return (
     <nav className="navbar navbar-dark bg-dark shadow mb-3">
       <ul className="navbar-nav mr-auto">
-      <li className="nav-item">
-      <Link className="navbar-brand" to="/">Home</Link>
+        <li className="nav-item">
+          <Link className="navbar-brand" to="/">Home</Link>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/list-of-events">

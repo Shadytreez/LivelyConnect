@@ -5,22 +5,22 @@ const { Attending } = db;
 
 //when a user rsvp
 router.post('/', (req, res) => {
-    let { content } = req.body;
-    console.log("TEST")
-    Attending.create({
-        user_name: req.body.user_name,
-        name: req.body.name,
-        user_linkedIn: req.body.user_linkedIn,
-        user_image: req.body.user_image,
-        event_id: req.body.event_id
+  let { content } = req.body;
+  console.log("TEST")
+  Attending.create({
+    user_name: req.body.user_name,
+    name: req.body.name,
+    user_linkedIn: req.body.user_linkedIn,
+    user_image: req.body.user_image,
+    event_id: req.body.event_id
+  })
+    .then(post => {
+      res.status(201).json(post);
     })
-      .then(post => {
-        res.status(201).json(post);
-      })
-      .catch(err => {
-        res.status(400).json(err);
-      });
-  });
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
   //to get all user that rsvp for the event
   router.get('/:id', (req, res) => {
